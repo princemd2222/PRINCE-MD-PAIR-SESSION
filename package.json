@@ -1,12 +1,12 @@
 {
-"name": "web-pair",
+"name": "prince-md",
     "version": "0.0.1",
     "description": "A multi functional whatsapp bot Web paircode.",
     "main": "index.js",
     "scripts": {
-      "start": "pm2 start index.js --deep-monitoring --attach --name dewmini-md",
-      "stop": "pm2 stop dewmini-md",
-     "restart": "pm2 restart dewmini-md"
+      "start": "pm2 start index.js --deep-monitoring --attach --name prince-md",
+      "stop": "pm2 stop prince-md",
+     "restart": "pm2 restart prince-md"
     },
   "dependencies": {
     "@whiskeysockets/baileys": "6.6.0",              
