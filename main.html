@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--icons link-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <title>THARUSHA MD SESSION SECTION</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0f0f, #1a1a1a, #000000);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            color: white;
+            overflow-y: auto;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .background-effects {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            will-change: transform;
+        }
+
+        .shape {
+            position: absolute;
+            background: #1d4343;
+            border: 1px solid #0fff00;
+            animation: roam 25s infinite ease-in-out;
+            will-change: transform;
+        }
+
+        .square {
+            width: 60px;
+            height: 60px;
+        }
+
+        .circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            border-bottom: 50px solid #13c715;
+        }
+
+        .shape:nth-child(1) { top: 10%; left: 5%; animation-duration: 20s; }
+        .shape:nth-child(2) { top: 50%; left: 20%; animation-duration: 25s; }
+        .shape:nth-child(3) { top: 30%; left: 60%; animation-duration: 22s; }
+        .shape:nth-child(4) { top: 70%; left: 40%; animation-duration: 28s; }
+
+        @keyframes roam {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(30vw, 20vh) rotate(90deg); }
+            50% { transform: translate(-25vw, -25vh) rotate(180deg); }
+            75% { transform: translate(20vw, 30vh) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+
+        .star {
+            position: absolute;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 10%, #0fff00 50%, transparent 70%);
+            border-radius: 50%;
+            animation: twinkle 4s infinite ease-in-out;
+            will-change: opacity, transform;
+        }
+
+        .star:nth-child(5) { top: 15%; left: 25%; width: 3px; height: 3px; animation-delay: 0s; }
+        .star:nth-child(6) { top: 55%; left: 45%; width: 2px; height: 2px; animation-delay: 1s; }
+        .star:nth-child(7) { top: 75%; left: 65%; width: 4px; height: 4px; animation-delay: 0.5s; }
+        .star:nth-child(8) { top: 25%; left: 85%; width: 2px; height: 2px; animation-delay: 2s; }
+
+        @keyframes twinkle {
+            0% { opacity: 0.4; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.1); }
+            100% { opacity: 0.4; transform: scale(0.8); }
+        }
+
+        body.light-mode {
+            background: linear-gradient(45deg, #c0bfbf, #c1c1c1);
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #0fff00;
+            border-radius: 15px;
+            padding: 20px;
+            width: 350px;
+            box-shadow: 0 0 20px rgba(129,207,80,0.5);
+            position: relative;
+            animation: sway 3s infinite ease-in-out, fadeIn 2.5s ease-in;
+            transition: background 0.5s ease, color 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body.light-mode .container {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #0fff00;
+            box-shadow: 0 0 20px rgba(48,190,54,0.5);
+        }
+
+        @keyframes sway {
+            0% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(30px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            color: #0fff00;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        body.light-mode .header {
+            color: #0fff00;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #0fff00;
+            font-size: 12px;
+            margin-bottom: 20px;
+            font-style: sans-serif;
+            font-weight: 500;
+        }
+
+        body.light-mode .subtitle {
+            color: #333;
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            background: #2c652a;
+            border: 1px solid #0fff00;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: glow 2s infinite alternate;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.light-mode .button {
+            background: #e0e0e0;
+            border: 1px solid #0fff00;
+            color: #333;
+        }
+
+        .button:hover {
+            background: linear-gradient(45deg, #00ff40, #00f2ff, #ffeb3b);
+            background-size: 400%;
+            animation: colorFlow 6s linear infinite;
+            box-shadow: 0 0 20px #0fff00;
+            transform: scale(1.05);
+            color: #000;
+            font-weight: 900;
+            border: 1.5px solid #0fff00;
+        }
+
+        body.light-mode .button:hover {
+            background: linear-gradient(45deg, #84c0ec, #0fff00, #27b2fc, #00ffea);
+            background-size: 400%;
+            animation: colorFlow 6s linear infinite;
+            box-shadow: 0 0 20px #0fff00;
+            color: #fff;
+            font-weight: 900;
+            border: 1px solid #333;
+        }
+
+        @keyframes colorFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .button.gradient {
+            background: linear-gradient(45deg, #ff00ff, #0fff00);
+            border: none;
+        }
+
+        body.light-mode .button.gradient {
+            background: linear-gradient(45deg, #ff69b4, #0fff00);
+        }
+
+        .button.error {
+            background: #4a1a1a;
+            border: 1px solid #ff5555;
+        }
+
+        .button.error:hover {
+            background: linear-gradient(45deg, #ff0000, #ff5555, #ff69b4, #ffd700);
+            background-size: 400%;
+            animation: colorFlow 6s linear infinite;
+            color: #fff;
+            border: 2px solid #ffffff;
+            font-weight: 900;
+        }
+
+        body.light-mode .button.error {
+            background: #ffe6e6;
+            border: 1px solid #ff0000;
+            color: #ff0000;
+        }
+
+        body.light-mode .button.error:hover {
+            background: linear-gradient(45deg, #ff0000, #ff69b4, #ffd700);
+            background-size: 400%;
+            animation: colorFlow 6s linear infinite;
+            color: #fff;
+            border: 2px solid #333;
+        }
+
+        .button span {
+            margin-left: 10px;
+        }
+
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px rgba(58,165,43,0.3);
+            }
+            100% {
+                box-shadow: 0 0 15px #0fff00;
+            }
+        }
+
+        body.light-mode @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px rgba(64,205,92,0.3);
+            }
+            100% {
+                box-shadow: 0 0 15px #0fff00;
+            }
+        }
+
+        .footer {
+            text-align: center;
+            color: #ffffff;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+
+        body.light-mode .footer {
+            color: #333;
+        }
+
+        .toggle-mode {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #0fff00;
+            border: none;
+            border-radius: 20px;
+            padding: 5px 10px;
+            cursor: pointer;
+            color: #000;
+            font-size: 14px;
+            transition: background 0.3s ease;
+        }
+
+        .toggle-mode:hover {
+            background: #25a123;
+        }
+
+        body.light-mode .toggle-mode {
+            background: #0fff00;
+            color: #fff;
+        }
+
+        body.light-mode .toggle-mode:hover {
+            background: #0fff00;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-effects">
+        <div class="shape square"></div>
+        <div class="shape circle"></div>
+        <div class="shape triangle"></div>
+        <div class="shape square"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
+  
+    <div class="container">
+        <button class="toggle-mode" onclick="toggleMode()">Light Mode</button>
+        <div class="header">THARUSHA MD</div>
+        <div class="subtitle">ULTIMATE SESSION MANAGER</div>
+
+        <a href="/qr" class="button" target="_blank">
+            <span><i class="fas fa-qrcode"></i></span> <span>QR-CODE</span>
+        </a>
+        <a href="/pair" class="button" target="_blank">
+            <span><i class="fas fa-handshake"></i></span> <span>PAIRING-CODE</span>
+        </a>
+        <a href="https://example.com/repo-create-video" class="button" target="_blank">
+            <span><i class="fab fa-github"></i></span> <span>REPO CREATE VIDEO</span>
+        </a>
+        <a href="https://example.com/tharusha-md-zip-download" class="button" target="_blank">
+            <span><i class="fa-solid fa-download"></i></span> <span>THARUSHA MD ZIP DOWNLOAD</span>
+        </a>
+        <a href="https://whatsapp.com/channel/0029Vb4eZqo3bbV0lTGjFn2S" class="button" target="_blank">
+            <span>️<i class="fa-brands fa-whatsapp"></i></span> <span>JOIN WA-CHANNEL</span>
+        </a>
+        <a href="https://example.color/Tharusha-md-deployvideo" class="button" target="_blank">
+            <span><i class="fa-solid fa-video"></i></span> <span>THARUSHA MD DEPLOY VIDEO</span>
+        </a>
+        <a href="https://wa.me/+94740326138?text=HAVE_ERROR_THARUSHA-MD⚠️" class="button error" target="_blank">
+            <span><i class="fa-solid fa-triangle-exclamation"></i></span> <span>ERROR</span>
+        </a>
+        <a href="https://wa.me/+94740326138?text=👋HELLO_THARUSHA_S鹢DIPA" class="button" target="_blank">
+            <span><i class="fa-solid fa-user"></i></span> <span>OWNER</span>
+        </a>
+        
+        <a href="https://wa.me/+94740326138?text=HAVE_ERROR_THARUSHA" class="button" target="_blank">
+            <span><i class="fa-brands fa-octopus-deploy"></i></span> <span>THARUSHA-MD DEPLOY HEROKU</span>
+        </a>
+
+        <div class="footer">© 2025 THARUSHA MD | POWERED BY Tharusha Sandipa 2025</div>
+    </div>
+
+    <script>
+        function toggleMode() {
+            const body = document.body;
+            const toggleButton = document.querySelector('.toggle-mode');
+            body.classList.toggle('light-mode');
+            toggleButton.textContent = body.classList.contains('light-mode') ? 'Dark Mode' : 'Light Mode';
+        }
+    </script>
+</body>
+</html>
